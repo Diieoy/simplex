@@ -1,0 +1,68 @@
+﻿@model WebUI.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>@WebUI.Resources.AccountControllerTexts.Registration</h2>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger form-validation" })
+
+    <div class="row">
+        @Html.Label(WebUI.Resources.AccountControllerTexts.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group col-xs-4">
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+            <p class="text-danger">@Html.ValidationMessageFor(m => m.UserName)</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.Label(WebUI.Resources.AccountControllerTexts.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group col-xs-4">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            <p class="text-danger">@Html.ValidationMessageFor(m => m.Password)</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.Label(WebUI.Resources.AccountControllerTexts.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group col-xs-4">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            <p class="text-danger">@Html.ValidationMessageFor(m => m.Email)</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.Label(WebUI.Resources.AccountControllerTexts.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="TextBoxFor-group col-xs-4">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            <p class="text-danger">@Html.ValidationMessageFor(m => m.FirstName)</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.Label(WebUI.Resources.AccountControllerTexts.Surname, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="TextBoxFor-group col-xs-4">
+            @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+            <p class="text-danger">@Html.ValidationMessageFor(m => m.Surname)</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.Label(WebUI.Resources.AccountControllerTexts.TimeZone, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="TextBoxFor-group col-xs-4">
+            @Html.DropDownListFor(m => m.TimeZone, new SelectList(TimeZoneInfo.GetSystemTimeZones()), new { @class = "form-control" })
+            <p class="text-danger">@Html.ValidationMessageFor(m => m.TimeZone)</p>
+        </div>
+    </div>
+    <div class="row">
+        @Html.Label(WebUI.Resources.AccountControllerTexts.UserLanguage, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="TextBoxFor-group col-xs-4">
+            @Html.EnumDropDownListFor(m => m.UserLanguage, WebUI.Resources.AccountControllerTexts.SelectLanguage, new { @class = "form-control" })
+            <p class="text-danger">@Html.ValidationMessageFor(m => m.UserLanguage)</p>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">@WebUI.Resources.AccountControllerTexts.Register</button>
+    </div>
+}

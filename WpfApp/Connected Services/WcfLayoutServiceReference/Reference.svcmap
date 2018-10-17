@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1e8883c4-ca96-40a9-bfe6-c1b90502b793" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8004/ConsoleAppHost/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="51f1003a-ebc6-4d6e-9ccb-c7e0e98ba9fa" SourceId="1" SourceUrl="http://localhost:8004/ConsoleAppHost/?xsd=xsd0" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="1800922e-c5ad-4314-8577-b89c19621dd8" SourceId="1" SourceUrl="http://localhost:8004/ConsoleAppHost/?xsd=xsd2" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="33f8584c-8db1-47f2-8628-e19f551ff496" SourceId="1" SourceUrl="http://localhost:8004/ConsoleAppHost/?disco" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="ef998806-15fb-431c-9b41-fdfc051efe50" SourceId="1" SourceUrl="http://localhost:8004/ConsoleAppHost/?xsd=xsd3" />
+    <MetadataFile FileName="LayoutService.wsdl" MetadataType="Wsdl" ID="da625ddf-1379-4b9e-b128-843d64fd91ad" SourceId="1" SourceUrl="http://localhost:8004/ConsoleAppHost/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="a1bfe3f9-c890-4d00-9655-dcc0e7e71c6b" SourceId="1" SourceUrl="http://localhost:8004/ConsoleAppHost/?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,35 @@
+﻿@model PagedList.IPagedList<WebUI.Models.EventViewModel>
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="contatiner">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-xs-12 col-md-12 col-sm-12 event">
+                <div class="col-xs-3 col-md-3 col-sm-3">
+                    <img width="200" height="200" src="@item.ImageUrl" class="img-rounded" />
+                </div>
+                <div class="col-xs-9 col-md-9 col-sm-9">
+                    <h3>@Html.ActionLink(item.Name, "Details", new { id = item.Id })</h3>
+                    <p> @WebUI.Resources.HomeControllerTexsts.Description: @item.Description </p>
+                    <p>
+                        @WebUI.Resources.HomeControllerTexsts.Date: @item.DateTimeStart.ToLongDateString()
+                        <br />
+                        @WebUI.Resources.HomeControllerTexsts.TimeStart: @item.DateTimeStart.ToShortTimeString()
+                        <br />
+                        @WebUI.Resources.HomeControllerTexsts.TimeFinish: @item.DateTimeFinish.ToShortTimeString()
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+    @WebUI.Resources.HomeControllerTexsts.Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) @WebUI.Resources.HomeControllerTexsts.Of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
+

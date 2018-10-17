@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebUI.Models.PurchaseHistoryViewModel>
+
+@{
+    ViewBag.Title = "ShowPurchaseHistory";
+}
+
+<h2>@WebUI.Resources.CartControllerTexts.PurchaseHistory</h2>
+
+<table class="table">
+    <tr>
+        <th>@WebUI.Resources.CartControllerTexts.VenueAddress</th>
+        <th>@WebUI.Resources.CartControllerTexts.LayoutName</th>
+        <th>@WebUI.Resources.CartControllerTexts.EventName</th>
+        <th>@WebUI.Resources.CartControllerTexts.DateTimeStart</th>
+        <th>@WebUI.Resources.CartControllerTexts.DateTimeFinish</th>
+        <th>@WebUI.Resources.CartControllerTexts.EventAreaDescription</th>
+        <th>@WebUI.Resources.CartControllerTexts.EventAreaPrice</th>
+        <th>@WebUI.Resources.CartControllerTexts.EventSeatRow</th>
+        <th>@WebUI.Resources.CartControllerTexts.EventSeatNumber</th>
+        <th>@WebUI.Resources.CartControllerTexts.DateTimeOrder</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.VenueAddress "@item.VenueName"</td>
+        <td>@item.LayoutName</td>
+        <td>@item.EventName</td>
+        <td>@item.DateTimeStart</td>
+        <td>@item.DateTimeFinish</td>
+        <td>@item.EventAreaDescription</td>
+        <td>@item.EventAreaPrice</td>
+        <td>@item.EventSeatRow</td>
+        <td>@item.EventSeatNumber</td>
+        <td>@item.DateTimeOrder</td>
+    </tr>
+    }
+</table>

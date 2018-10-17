@@ -1,0 +1,52 @@
+﻿<Window x:Class="WpfApp.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp.Views"
+        mc:Ignorable="d"
+        xmlns:l="clr-namespace:LocalizatorHelper;assembly=LocalizatorHelper"
+        Title="Main View" Height="1000" Width="1400" FontSize="15" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <l:LocalisationHelper x:Key="helper"></l:LocalisationHelper>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="40"></ColumnDefinition>
+            <ColumnDefinition MinWidth="40"></ColumnDefinition>
+            <ColumnDefinition MinWidth="40"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- Row 0 -->
+        <Menu Grid.Row="0" Grid.Column="0">
+            <MenuItem Header="{Binding Source={StaticResource helper}, Path=[MyResources.Language]}">
+                <MenuItem Header="Русский" x:Name="RuMenu"></MenuItem>
+                <MenuItem Header="English" x:Name="EnMenu"></MenuItem>
+                <MenuItem Header="Беларускі" x:Name="BeMenu"></MenuItem>
+            </MenuItem>
+        </Menu>
+        
+        <Button x:Name="LoadUsersPage" 
+                Grid.Row="0" Grid.Column="1" 
+                Content="{Binding Source={StaticResource helper}, Path=[MyResources.UM]}"></Button>
+        <Button x:Name="LoadManagerPage" 
+                Grid.Row="0" Grid.Column="2"
+                Content="{Binding Source={StaticResource helper}, Path=[MyResources.VM]}"
+                ></Button>
+
+        <!-- Row 1 -->
+        <TextBlock Text="{Binding Source={StaticResource helper}, Path=[MyResources.Hello]}" 
+                   Grid.Row="1" Grid.ColumnSpan="3"
+                   Margin="5"></TextBlock>
+
+        <!-- Row 2 -->
+        <ContentControl x:Name="ActiveItem" Grid.Row="2" Grid.ColumnSpan="3"></ContentControl>
+    </Grid>
+</Window>

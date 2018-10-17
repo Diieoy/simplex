@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[User]
+(
+	[Id] NVARCHAR(200) NOT NULL PRIMARY KEY, 
+    [UserName] NVARCHAR(50) NOT NULL, 
+    [FirstName] NVARCHAR(50) NOT NULL, 
+    [Surname] NVARCHAR(50) NOT NULL, 
+    [Email] NVARCHAR(50) NOT NULL, 
+    [PasswordHash] NVARCHAR(MAX) NOT NULL, 
+    [Account] DECIMAL NOT NULL DEFAULT 0, 
+    [TimeZone] NVARCHAR(MAX) NOT NULL, 
+    [Language] NVARCHAR(50) NOT NULL
+)

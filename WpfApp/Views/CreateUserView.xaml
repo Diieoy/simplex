@@ -1,0 +1,135 @@
+﻿<Window x:Class="WpfApp.Views.CreateUserView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp.Converters"
+        mc:Ignorable="d"
+        xmlns:l="clr-namespace:LocalizatorHelper;assembly=LocalizatorHelper"
+        Title="CreateUserView" Height="675" Width="800" FontSize="20" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <local:TimeZoneConverter x:Key="TimeZoneConverter" />
+        <local:LanguageConverter x:Key="LanguageConverter"/>
+        <l:LocalisationHelper x:Key="helper"></l:LocalisationHelper>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, 
+                        Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="2" 
+               Content="{Binding Source={StaticResource helper}, Path=[MyResources.Nick]}"
+               Margin="10 0"></Label>
+        <TextBox Grid.Row="3" 
+                 Text="{Binding User.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                 Margin="10 0"></TextBox>
+        
+        <Label Grid.Row="4" 
+               Content="{Binding Source={StaticResource helper}, Path=[MyResources.Password]}" 
+               Margin="10 0"></Label>
+        <TextBox Grid.Row="5" 
+                 Text="{Binding User.PasswordHash, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                 Margin="10 0"></TextBox>
+        
+        <Label Grid.Row="6" 
+               Content="{Binding Source={StaticResource helper}, Path=[MyResources.FN]}" 
+               Margin="10 0"></Label>
+        <TextBox Grid.Row="7" 
+                 Text="{Binding User.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                 Margin="10 0"></TextBox>
+        
+        <Label Grid.Row="8" 
+               Content="{Binding Source={StaticResource helper}, Path=[MyResources.SN]}"
+               Margin="10 0"></Label>
+        <TextBox Grid.Row="9" 
+                 Text="{Binding User.Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                 Margin="10 0"></TextBox>
+        
+        <Label Grid.Row="10" 
+               Content="Email"
+               Margin="10 0"></Label>
+        <TextBox Grid.Row="11" 
+                 Text="{Binding User.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                 Margin="10 10"></TextBox>
+
+        <Label Grid.Row="12" 
+               Content="{Binding Source={StaticResource helper}, Path=[MyResources.TZ]}"
+               Margin="10 0"></Label>
+        <ComboBox Grid.Row="13" HorizontalAlignment="Left" MinWidth="300"
+                  x:Name="TimeZones" 
+                  ItemsSource="{Binding TimeZones}" 
+                  SelectedItem="{Binding SelectedTimeZone}"
+                  IsEditable="True" 
+                  Text="------" 
+                  Margin="10 10"></ComboBox>
+
+        <Label Grid.Row="14" 
+               Content="{Binding Source={StaticResource helper}, Path=[MyResources.Language]}"
+               Margin="10 0"></Label>
+        <ComboBox Grid.Row="15" HorizontalAlignment="Left" MinWidth="300"
+                  x:Name="Languages" IsEditable="True"
+                  Text="------" 
+                  ItemsSource="{Binding Languages, Mode=TwoWay}" 
+                  SelectedItem="{Binding SelectedLanguage}" 
+                  VerticalAlignment="Top" 
+                  Margin="10 10"/>
+
+        <Label Grid.Row="16" 
+               Content="{Binding Source={StaticResource helper}, Path=[MyResources.Role]}"
+               Margin="10 0"></Label>
+        <ComboBox Grid.Row="17" HorizontalAlignment="Left" MinWidth="300"
+                  x:Name="AllRoles" 
+                  ItemsSource="{Binding AllRoles}" 
+                  SelectedItem="{Binding SelectedRole, Mode=TwoWay}"
+                  IsEditable="True" 
+                  Text="------" 
+                  Margin="10 0"></ComboBox>
+
+        <Button Grid.Row="18" 
+                x:Name="CreateUser" 
+                Margin="10 10"
+                Content="{Binding Source={StaticResource helper}, Path=[MyResources.CU]}"/>
+
+    </Grid>
+</Window>

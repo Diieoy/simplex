@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebUI.WcfEventServiceReference.EventAreaDTO>
+
+@{
+    ViewBag.Title = "ShowEventAreas";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @WebUI.Resources.EventManagerControllerTexts.EventId
+        </th>
+        <th>
+            @WebUI.Resources.EventManagerControllerTexts.LayoutId
+        </th>
+        <th>
+            @WebUI.Resources.EventManagerControllerTexts.Description
+        </th>
+        <th>
+            @WebUI.Resources.EventManagerControllerTexts.CoordX
+        </th>
+        <th>
+            @WebUI.Resources.EventManagerControllerTexts.CoordY
+        </th>
+        <th>
+            @WebUI.Resources.EventManagerControllerTexts.Priece
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LayoutId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoordX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoordY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink(WebUI.Resources.EventManagerControllerTexts.Edit, "EditEventArea", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

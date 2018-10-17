@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1f003c7f-efb0-4958-9554-f0885e75fc9f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8002/ConsoleAppHost/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="00e1c92a-2624-4ef9-ae2b-2044660e22c1" SourceId="1" SourceUrl="http://localhost:8002/ConsoleAppHost/?disco" />
+    <MetadataFile FileName="VenueService.wsdl" MetadataType="Wsdl" ID="e1b46979-ce44-49bc-8a6a-7ba24ad99683" SourceId="1" SourceUrl="http://localhost:8002/ConsoleAppHost/?wsdl" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="a6f4464a-bdb9-4333-9a2b-386445ca1382" SourceId="1" SourceUrl="http://localhost:8002/ConsoleAppHost/?xsd=xsd2" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="c12e6dbd-01ee-4167-803d-397b68d384df" SourceId="1" SourceUrl="http://localhost:8002/ConsoleAppHost/?xsd=xsd3" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="18baab67-969a-429a-9620-d458d05cf462" SourceId="1" SourceUrl="http://localhost:8002/ConsoleAppHost/?xsd=xsd0" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="1ccb79f7-a677-4393-b670-9c6e42108bd2" SourceId="1" SourceUrl="http://localhost:8002/ConsoleAppHost/?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

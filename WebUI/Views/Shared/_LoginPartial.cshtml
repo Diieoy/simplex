@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink(WebUI.Resources.HomeControllerTexsts.Cart, "Index", "Cart")</li>
+            <li class="dropdown" name="menuDropDown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                    @WebUI.Resources.HomeControllerTexsts.Menu
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">                   
+                    <li>@Html.ActionLink(WebUI.Resources.HomeControllerTexsts.EditProfile, "Edit", "Account")</li>
+                    <li>@Html.ActionLink(WebUI.Resources.HomeControllerTexsts.ChangePassword, "ChangePassword", "Account")</li>
+                    <li>@Html.ActionLink(WebUI.Resources.HomeControllerTexsts.Account, "Account", "Account")</li>
+                    @if (User.IsInRole("event_manager"))
+                    {
+                        <li class="divider"></li>
+                        <li name="EventMenu">@Html.ActionLink(WebUI.Resources.HomeControllerTexsts.EventMenu, "Index", "EventManager")</li>
+                    }
+                </ul>
+            </li>
+            <li>
+                @Html.ActionLink(WebUI.Resources.HomeControllerTexsts.Hello + ", " + User.Identity.GetUserName() + "!", "Index", "Home", new { @name = "WelcomeLine" })
+            </li>
+            <li name="LogoutButton">
+                @Html.ActionLink(WebUI.Resources.HomeControllerTexsts.Logout, "Logout", "Account")
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li id="registration">@Html.ActionLink(WebUI.Resources.HomeControllerTexsts.Registration, "Register", "Account")</li>
+        <li id="login">@Html.ActionLink(WebUI.Resources.HomeControllerTexsts.Login, "Login", "Account")</li>
+    </ul>
+}

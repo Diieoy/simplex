@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebUI.Models.CartViewModel>
+
+@{
+    ViewBag.Title = "Cart";
+}
+
+<h2>@WebUI.Resources.CartControllerTexts.Cart</h2>
+
+@if (Model == null && ViewBag.SuccessMessage == null)
+{
+    <h2>Your bought nothing yet.</h2>
+}
+else if (ViewBag.SuccessMessage != null)
+{
+    <h2 id="SuccessMessage">@ViewBag.SuccessMessage</h2>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>@WebUI.Resources.CartControllerTexts.EventName</th>
+            <th>@WebUI.Resources.CartControllerTexts.DateTimeStart</th>
+            <th>@WebUI.Resources.CartControllerTexts.DateTimeFinish</th>
+            <th>@WebUI.Resources.CartControllerTexts.EventSeatRow</th>
+            <th>@WebUI.Resources.CartControllerTexts.EventSeatNumber</th>
+            <th>@WebUI.Resources.CartControllerTexts.EventAreaPrice</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EventName</td>
+                <td>@item.DateTimeStart</td>
+                <td>@item.DateTimeFinish</td>
+                <td>@item.EventSeatRow</td>
+                <td>@item.EventSeatNumber</td>
+                <td>@item.EventAreaPrice</td>
+                <td>@Html.ActionLink(WebUI.Resources.CartControllerTexts.Delete, "DeleteItem", new { eventSeatId = item.EventSeatId })</td>
+            </tr>
+        }
+    </table>
+
+    <p>@WebUI.Resources.CartControllerTexts.PurchaseAmount: @Session["totalPrice"].ToString()</p>
+    <p>@WebUI.Resources.CartControllerTexts.YourAccount: @Session["userAccount"].ToString()</p>
+    <p>@Html.ActionLink(WebUI.Resources.CartControllerTexts.Buy, "Buy")   @ViewBag.AccountError</p>
+    @Html.ActionLink(WebUI.Resources.CartControllerTexts.Continue, "Index", "Home")
+}
+
+<p>@Html.ActionLink(WebUI.Resources.CartControllerTexts.PurchaseHistory, "ShowPurchaseHistory", null, new { id = "PurchaseHistory" })</p>

@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[UserRole]
+(
+	[Id] INT IDENTITY PRIMARY KEY, 
+    [RoleId] INT NOT NULL, 
+    [UserId] NVARCHAR(200) NOT NULL
+)

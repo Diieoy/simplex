@@ -1,0 +1,14 @@
+﻿@model WebUI.Models.CartViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@WebUI.Resources.CartControllerTexts.NoPurchases</h2>
+<p>@Html.ActionLink(WebUI.Resources.CartControllerTexts.PurchaseHistory, "ShowPurchaseHistory", null, new { id = "PurchaseHistory" })</p>
+@if(Session["accountError"] != null)
+{
+    <p>@Session["accountError"] - @Html.ActionLink(WebUI.Resources.CartControllerTexts.AddMoney, "Account", "Account")</p>
+}
+
+<p>@ViewBag.Message</p>

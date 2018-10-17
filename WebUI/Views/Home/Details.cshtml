@@ -1,0 +1,84 @@
+﻿@model WebUI.Models.EventViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Name</h2>
+<h2>@ViewBag.ErrorMessage</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"><img width="150" height="150" src="@Model.ImageUrl" alt="img" class="img-rounded"></div>
+        <div class="col-sm-9">
+            <p>
+                @WebUI.Resources.HomeControllerTexsts.Address: @Model.VenueAddress "@Model.VenueName"; @WebUI.Resources.HomeControllerTexsts.Phone. @Model.VenuePhone
+                <br />
+                @WebUI.Resources.HomeControllerTexsts.DescriptionOfVenue: @Model.VenueDescription
+                <br />
+                @WebUI.Resources.HomeControllerTexsts.Location: @Model.LayoutName
+                <br />
+                @Model.LayoutDescription
+            </p>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink(@WebUI.Resources.HomeControllerTexsts.YouShoulRregistered, "Register", "Account")
+            }
+
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-sm-12">
+            @{ 
+                int step = 0;
+            }
+            @for (int i = 1; i <= Model.EventAreaDTOs.Count; i++)
+            {                
+                <h3>@Model.EventAreaDTOs[i - 1].Description</h3>
+                <h4>@WebUI.Resources.HomeControllerTexsts.PriceForOneSeat = @Model.EventAreaDTOs[i - 1].Price</h4>
+               
+                for (int q = 0; q < Model.EventSeatDTOs.Where(x => x.EventAreaId == Model.EventAreaDTOs[i - 1].Id).Count(); q++)
+                {
+                    @Html.HiddenFor(model => Model.EventSeatDTOs[q].Id)
+
+                <div class="details_event">
+                    @if (Model.EventSeatDTOs.Where(x => x.EventAreaId == Model.EventAreaDTOs[i - 1].Id).ElementAt(q).Number != -1)
+                    {
+                        @Html.DisplayFor(model => Model.EventSeatDTOs.Where(x => x.EventAreaId == Model.EventAreaDTOs[i - 1].Id).ElementAt(q).Number)
+                    }
+
+                    <br />
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (Model.EventSeatDTOs.Where(x => x.EventAreaId == Model.EventAreaDTOs[i - 1].Id).ElementAt(q).State == 0)
+                        {
+                            if (Model.EventSeatDTOs.Where(x => x.EventAreaId == Model.EventAreaDTOs[i - 1].Id).ElementAt(q).Number == -1)
+                            {
+                                <p>Blocked</p>
+                            }
+                            else
+                            {
+                                <p>@Html.ActionLink(WebUI.Resources.HomeControllerTexsts.AddToCart, "AddItem", "Cart", new { eventSeatId = Model.EventSeatDTOs.Where(x => x.EventAreaId == Model.EventAreaDTOs[i - 1].Id).ElementAt(q).Id }, null)</p>
+                            }
+                        }
+                        else
+                        {
+                            <p>@WebUI.Resources.HomeControllerTexsts.Bought</p>
+                        }
+                    }
+                </div>
+                    if(step == Model.EventAreaDTOs[i - 1].CoordX - 1)
+                    {
+                        <br />
+                        step = 0;
+                    }
+                    else
+                    {
+                        step++;
+                    }
+                }
+                <hr />
+            }
+        </div>
+    </div>
+</div>

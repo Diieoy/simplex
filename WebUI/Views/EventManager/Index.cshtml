@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebUI.WcfEventServiceReference.EventDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 name="EventMessage">@ViewBag.Message</h2>
+<p>   
+    @Html.ActionLink(WebUI.Resources.EventManagerControllerTexts.CreateEvent, "CreateEvent", null, new { @name = "CreateEventButton"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @WebUI.Resources.EventManagerControllerTexts.Name
+        </th>
+        <th>
+            @WebUI.Resources.EventManagerControllerTexts.Description
+        </th>
+        <th>
+            @WebUI.Resources.EventManagerControllerTexts.DateTimeStart
+        </th>
+        <th>
+            @WebUI.Resources.EventManagerControllerTexts.DateTimeFinish
+        </th>
+        <th>
+            @WebUI.Resources.EventManagerControllerTexts.ImageUrl
+        </th>
+        <th>
+            @WebUI.Resources.EventManagerControllerTexts.LayoutId
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTimeStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTimeFinish)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LayoutId)
+        </td>
+        <td>
+            @Html.ActionLink(WebUI.Resources.EventManagerControllerTexts.Edit, "EditEvent", new { id=item.Id }) |
+            @Html.ActionLink(WebUI.Resources.EventManagerControllerTexts.Details, "DetailsEvent", new { id=item.Id }) |
+            @Html.ActionLink(WebUI.Resources.EventManagerControllerTexts.Delete, "Delete", new { id=item.Id }, new { onclick = "return confirm('" + WebUI.Resources.EventManagerControllerTexts.ToDelete + "');" })
+        </td>
+    </tr>
+}
+
+</table>
